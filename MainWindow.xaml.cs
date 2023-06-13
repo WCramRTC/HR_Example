@@ -33,6 +33,8 @@ namespace HR_Example
 
             lvEmployees.ItemsSource = _employees;
 
+            
+
         } // MainWindow()
 
         // What expectations do I have when I run this code
@@ -60,15 +62,36 @@ namespace HR_Example
 
         private void Sort(object sender, RoutedEventArgs e)
         {
+
             Button clicked = (Button)sender;
 
-            switch (clicked.Content.ToString()) {
+            switch (clicked.Content.ToString())
+            {
                 case "First":
                     EmployeeSort.FirstName firstNameSort = new EmployeeSort.FirstName();
                     _employees.Sort(firstNameSort);
-                    
+
                     break;
                 case "Last":
+                    _employees.Sort(new EmployeeSort.LastName());
+                    break;
+            }
+
+            lvEmployees.Items.Refresh();
+        }
+
+        private void SortHeader(object sender, RoutedEventArgs e)
+        {
+            GridViewColumnHeader gvch = e.OriginalSource as GridViewColumnHeader;
+
+            switch (gvch.Content.ToString())
+            {
+                case "First Name":
+                    EmployeeSort.FirstName firstNameSort = new EmployeeSort.FirstName();
+                    _employees.Sort(firstNameSort);
+
+                    break;
+                case "Last Name":
                     _employees.Sort(new EmployeeSort.LastName());
                     break;
             }

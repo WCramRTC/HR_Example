@@ -7,10 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="1129">
     <Canvas>
-        <ListView x:Name="lvEmployees" Height="322" Width="948" d:ItemsSource="{d:SampleData ItemCount=5}" Canvas.Left="82" Canvas.Top="56" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <ListView x:Name="lvEmployees" Height="322" Width="948" d:ItemsSource="{d:SampleData ItemCount=5}" Canvas.Left="82" Canvas.Top="56" HorizontalAlignment="Left" VerticalAlignment="Center"
+                  GridViewColumnHeader.Click ="SortHeader">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}">
+                        <!--<GridViewColumn.Header>
+                            <GridViewColumnHeader Content="First Name" Tag="First"/>
+                        </GridViewColumn.Header>-->
+                    </GridViewColumn>
+
                     <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}"/>
                     <GridViewColumn Header="Social" DisplayMemberBinding="{Binding Social}"/>
                     <GridViewColumn Header="Start" DisplayMemberBinding="{Binding Start}"/>
