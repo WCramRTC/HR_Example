@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HR_Example
 {
-    internal class Employee
+    public class Employee
     {
 
         string _firstName;
@@ -18,8 +18,21 @@ namespace HR_Example
         string _id;
         double _totalHoursWorked;
         Positions.Position _position;
+        List<Shift> _shiftsWorked;
 
-        //public Employee() { }
+        public Employee() {
+            _shiftsWorked = new List<Shift>();
+        }
+
+        public void AddNewShift(Shift shift)
+        {
+            _shiftsWorked.Add(shift);
+        }
+
+        public Shift CurrentShift()
+        {
+            return _shiftsWorked[_shiftsWorked.Count - 1];
+        }
 
         public string FirstName { get => _firstName; set => _firstName = value; }
         public string LastName { get => _lastName; set => _lastName = value; }
@@ -31,6 +44,11 @@ namespace HR_Example
         public double TotalHoursWorked { get => _totalHoursWorked; set => _totalHoursWorked = value; }
         public Departments.Department Department { get => _department; set => _department = value; }
         public Positions.Position Position { get => _position; set => _position = value; }
+
+        public string FullName()
+        {
+            return $"{FirstName} {LastName} : {Position}";
+        }
     } // class
 
 } // namespace

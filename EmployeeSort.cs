@@ -25,5 +25,13 @@ namespace HR_Example
             }
         }
 
+        public class StartDate : IComparer<Employee>
+        {
+            int IComparer<Employee>.Compare(Employee? x, Employee? y)
+            {
+                return x.Start.CompareTo(y.Start);
+            }
+        }
+
     }
 }

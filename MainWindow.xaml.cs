@@ -33,8 +33,6 @@ namespace HR_Example
 
             lvEmployees.ItemsSource = _employees;
 
-            
-
         } // MainWindow()
 
         // What expectations do I have when I run this code
@@ -82,7 +80,10 @@ namespace HR_Example
 
         private void SortHeader(object sender, RoutedEventArgs e)
         {
-            GridViewColumnHeader gvch = e.OriginalSource as GridViewColumnHeader;
+            //GridViewColumnHeader gvch = e.OriginalSource as GridViewColumnHeader;
+            GridViewColumnHeader gvch = (GridViewColumnHeader)e.OriginalSource;
+
+           
 
             switch (gvch.Content.ToString())
             {
@@ -94,9 +95,32 @@ namespace HR_Example
                 case "Last Name":
                     _employees.Sort(new EmployeeSort.LastName());
                     break;
+                case "Start":
+                    _employees.Sort(new EmployeeSort.StartDate());
+                    break;
             }
 
             lvEmployees.Items.Refresh();
+        }
+
+        private void btnTimeClock_Click(object sender, RoutedEventArgs e)
+        {
+            new Timeclock().Show();
+        } // btnTimeClock_Click
+
+        private void lvEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(lvEmployees.SelectedItem != null)
+            {
+                Data.CurrentlySelected = (Employee)lvEmployees.SelectedItem;
+
+                lbCurrentlySelected.Content = $"{Data.CurrentlySelected.FirstName} {Data.CurrentlySelected.LastName}";
+            }
+        }
+
+        private void btnShiftWorked_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(Data.CurrentlySelected.CurrentShift().ShiftEnds());
         }
     } // class
 

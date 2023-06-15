@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="1129">
     <Canvas>
-        <ListView x:Name="lvEmployees" Height="322" Width="948" d:ItemsSource="{d:SampleData ItemCount=5}" Canvas.Left="82" Canvas.Top="56" HorizontalAlignment="Left" VerticalAlignment="Center"
-                  GridViewColumnHeader.Click ="SortHeader">
+        <ListView x:Name="lvEmployees" Height="322" Width="873" d:ItemsSource="{d:SampleData ItemCount=5}" Canvas.Left="82" Canvas.Top="56" HorizontalAlignment="Left" VerticalAlignment="Center"
+                  GridViewColumnHeader.Click ="SortHeader" SelectionChanged="lvEmployees_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}">
@@ -35,6 +35,9 @@
         <Button x:Name="btnDepart" Content="Depart" Canvas.Left="412" Canvas.Top="21" Width="67" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Sort"/>
         <Button x:Name="btnHours" Content="HoursWorked" Canvas.Left="498" Canvas.Top="21" Width="67" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Sort"/>
         <Button x:Name="Position" Content="Position" Canvas.Left="578" Canvas.Top="21" Width="67" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Sort"/>
+        <Button x:Name="btnTimeClock" Content="Timeclock" Canvas.Left="974" Canvas.Top="86" Height="50" Width="128" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnTimeClock_Click"/>
+        <Label x:Name="lbCurrentlySelected" Content="Label" Canvas.Left="738" Canvas.Top="18"/>
+        <Button x:Name="btnShiftWorked" Content="Last Shift Worked" Canvas.Left="974" Canvas.Top="150" Height="67" Width="128" Click="btnShiftWorked_Click"/>
 
     </Canvas>
 </Window>
